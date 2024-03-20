@@ -1,6 +1,8 @@
 package ast;
 import java.math.BigInteger;
 
+import environment.Environment
+;
 public class ASTinteger extends ASTexpression {
 
   private final String description;
@@ -19,7 +21,7 @@ public class ASTinteger extends ASTexpression {
     return value.toString();
   }
 
-  public Object eval(){
+  public Object eval(Environment env){
     return value;
   }
 

@@ -2,6 +2,8 @@ package ast;
 
 import java.math.BigInteger;
 
+import environment.Environment;
+
 public class ASTunaryOperation extends ASTexpression {
 
     private final String operator;
@@ -27,9 +29,9 @@ public class ASTunaryOperation extends ASTexpression {
     }
 
     @Override
-    public Object eval() {
+    public Object eval(Environment env) {
         // Évalue l'opérande
-        Object opValue = operand.eval();
+        Object opValue = operand.eval(env);
 
         // Assurez-vous que l'opérande est un BigInteger (ou adaptez selon le type attendu)
         if (!(opValue instanceof BigInteger)) {

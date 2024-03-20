@@ -1,5 +1,6 @@
 package ast;
 
+import environment.Environment;
 
 public class ASTVariableDeclaration extends ASTexpression {
     private String variableName;
@@ -12,15 +13,14 @@ public class ASTVariableDeclaration extends ASTexpression {
 
     @Override
     public String toString() {
-        // Implement your logic here
         return "var " + variableName + " = " + initialValue.toString();
     }
 
-    @Override
-public Object eval() {
-    Object value = initialValue.eval();
-   // reste de la logique
-    return value; // Return the initial value of the variable
-}
 
+    @Override
+    public Object eval(Environment env) {
+        Object value = initialValue.eval(env);
+        env.declareVariable(variableName, value);
+        return value;
+    }
 }

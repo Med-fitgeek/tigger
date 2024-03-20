@@ -1,5 +1,7 @@
 package ast;
 
+import environment.Environment;
+
 public class ASTLoop extends ASTexpression {
     private ASTexpression condition;
     private ASTexpression body;
@@ -16,9 +18,9 @@ public class ASTLoop extends ASTexpression {
     }
 
     @Override
-    public Object eval() {
-        while (Boolean.TRUE.equals(condition.eval())) {
-            body.eval(); // Execute the loop body
+    public Object eval(Environment env) {
+        while (Boolean.TRUE.equals(condition.eval(env))) {
+            body.eval(env); // Execute the loop body
         }
         return null; // Loops typically don't return a value
     }
