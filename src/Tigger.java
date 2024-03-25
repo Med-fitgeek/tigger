@@ -1,4 +1,5 @@
 import ast.*;
+//import environment.Environment;
 import frontend.*;
 
 import java.io.File;
@@ -6,6 +7,8 @@ import java.io.File;
 public class Tigger{
 
   public static void main(String[] args) {
+   // Environment env = new Environment();
+
     if (args.length < 1) {
       System.out.println("expecting a tigger file");
       System.exit(1);

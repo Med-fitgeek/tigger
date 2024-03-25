@@ -1,6 +1,7 @@
 package ast;
 
 import java.math.BigInteger;
+//import environment.Environment;
 
 public class ASTbinaryOperation extends ASTexpression {
 
@@ -33,7 +34,7 @@ public class ASTbinaryOperation extends ASTexpression {
     }
 
     @Override
-    public Object eval() {
+    public Object eval(/*Environment env*/) {
         // Évalue les opérandes
         Object leftValue = leftOperand.eval();
         Object rightValue = rightOperand.eval();

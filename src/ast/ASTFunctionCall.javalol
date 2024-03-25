@@ -1,0 +1,36 @@
+package ast;
+
+import environment.Environment;
+import environment.Function;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class ASTFunctionCall extends ASTexpression {
+    private String functionName;
+    private List<ASTexpression> arguments;
+
+    public ASTFunctionCall(String functionName, List<ASTexpression> arguments) {
+        this.functionName = functionName;
+        this.arguments = arguments;
+    }
+
+    @Override
+    public String toString() {
+        String argsString = arguments.stream()
+                                    .map(Object::toString)
+                                    .collect(Collectors.joining(", "));
+        return functionName + "(" + argsString + ")";
+    }
+
+
+    @Override
+    public Object eval(Environment env) {
+        // Correction pour utiliser `env` correctement
+        Function function = env.getFunction(functionName);
+        List<Object> argValues = arguments.stream()
+                                        .map(arg -> arg.eval(env)) // Assurez-vous de passer `env`
+                                        .collect(Collectors.toList());
+        return function.call(argValues.toArray(new Object[0]));
+    }
+
+}

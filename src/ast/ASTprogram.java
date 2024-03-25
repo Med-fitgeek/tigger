@@ -1,6 +1,6 @@
 package ast;
 
-import environment.Environment;
+//import environment.Environment;
 
 public class ASTprogram {
   public ASTprogram(ASTexpression expression) {
@@ -17,7 +17,7 @@ public class ASTprogram {
     return this.body.toString();
   }
 
-  public Object eval(Environment env) {
-    return this.body.eval(env);
+  public Object eval(/*Environment env*/) {
+    return this.body.eval();
   }
 }

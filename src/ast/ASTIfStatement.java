@@ -1,6 +1,6 @@
 package ast;
 
-import environment.Environment;
+//import environment.Environment;
 
 public class ASTIfStatement extends ASTexpression {
     private ASTexpression condition;
@@ -21,12 +21,12 @@ public class ASTIfStatement extends ASTexpression {
 
 
     @Override
-    public Object eval(Environment env) {
-        Object conditionResult = condition.eval(env);
+    public Object eval(/*Environment env*/) {
+        Object conditionResult = condition.eval();
         if (Boolean.TRUE.equals(conditionResult)) {
-            return thenBranch.eval(env);
+            return thenBranch.eval();
         } else if (elseBranch != null) {
-            return elseBranch.eval(env);
+            return elseBranch.eval();
         }
         return null; // Aucune branche à exécuter
     }
